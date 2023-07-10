@@ -13,16 +13,16 @@ window.addEventListener('beforeinstallprompt', (event) => {
 butInstall.addEventListener('click', () => {
     if (deferredPrompt) {
         deferredPrompt.prompt().then((userChoice) => {
-          if (userChoice.outcome === 'accepted') {
-            // Installation successful
-          }
-          deferredPrompt = null;
-          butInstall.classList.add('hidden');
+            if (userChoice.outcome === 'accepted') {
+                // Installation successful
+            }
+            deferredPrompt = null;
+            butInstall.classList.add('hidden');
         }).catch((error) => {
-          console.error('Error Installing:', error);
+            console.error('Error Installing:', error);
         });
-      }
-  });
+    }
+});
 
 // Handler for the `appinstalled` event
 window.addEventListener('appinstalled', (event) => {

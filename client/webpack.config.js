@@ -17,6 +17,7 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'J.A.T.E.'
@@ -35,15 +36,17 @@ module.exports = () => {
             sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
             destination: path.join('assets', 'icons'),
           }
-    ],
-  }),
+
+        ],
+      }),
+
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
-],
+    ],
 
-// CSS Loaders and Babel to Webpack.
+    // CSS Loaders and Babel to Webpack.
 
     module: {
       rules: [

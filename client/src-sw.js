@@ -29,7 +29,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 // Asset caching
 registerRoute(
   ({ request }) => request.destination === 'image',
-    // CacheFirst: Retrieve from cache or fallback to network 
+  // CacheFirst: Retrieve from cache or fallback to network 
   new CacheFirst({
     cacheName: 'asset-cache',
     plugins: [
