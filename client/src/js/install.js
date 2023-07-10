@@ -12,25 +12,20 @@ window.addEventListener('beforeinstallprompt', (event) => {
 // TODO: Implement a click event handler on the `butInstall` element
 butInstall.addEventListener('click', () => {
     if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice
-        .then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('PWA installation accepted');
-          } else {
-            console.log('PWA installation dismissed');
+        deferredPrompt.prompt().then((userChoice) => {
+          if (userChoice.outcome === 'accepted') {
+            // Installation successful
           }
           deferredPrompt = null;
           butInstall.classList.add('hidden');
-        })
-        .catch((error) => {
-          console.error('Error occurred while prompting installation:', error);
+        }).catch((error) => {
+          console.error('Error Installing:', error);
         });
-    }
+      }
   });
 
 // TODO: Add an handler for the `appinstalled` event
 window.addEventListener('appinstalled', (event) => {
-    console.log('PWA installed');
+    console.log('Installed.');
     butInstall.classList.add('hidden');
 });
