@@ -20,13 +20,9 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Header'
+        title: 'J.A.T.E.'
       }),
 
-      new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: 'src-sw.js',
-      }),
       new WebpackPwaManifest({
         name: 'PWA Text Editor',
         short_name: 'J.A.T.E.',
@@ -35,12 +31,16 @@ module.exports = () => {
         publicPath: '.',
         icons: [
           {
-            src: path.resolve('src/images/logo.png'),
+            src: path.resolve('./src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
             destination: path.join('assets', 'icons'),
           }
     ],
   }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
 ],
 
 // CSS Loaders and Babel to Webpack.
